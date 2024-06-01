@@ -16,7 +16,7 @@
       const loaderStyle = {
         border: '16px solid #f3f3f3',
         borderRadius: '50%',
-        borderTop: '16px solid blue',
+        borderTop: '16px solid #2a2a72',
         width: '120px',
         height: '120px',
         animation: 'spin 2s linear infinite',
@@ -32,12 +32,12 @@
 
       const Header = () => {
         const styles = {
-          backgroundColor: 'yellow',
-          color: 'blue',
-          padding: '15px',
+          backgroundColor: '#2a2a72',
+          color: 'white',
+          padding: '20px',
           margin: '0',
           textAlign: 'center',
-          fontSize: '20px',
+          fontSize: '24px',
           fontWeight: 'bold',
           textTransform: 'uppercase'
         };
@@ -46,14 +46,24 @@
         );
       };
 
+      const TeamLogo = () => {
+        const logoStyle = {
+          display: 'block',
+          margin: '20px auto',
+          maxHeight: '200px',
+        };
+        return <img src="https://ih1.redbubble.net/image.2531396423.3911/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="Team Logo" style={logoStyle} />;
+      };
+
       const Footer = () => {
         const styles = {
           textAlign: 'center',
-          padding: '5px',
-          backgroundColor: 'blue',
+          padding: '10px',
+          backgroundColor: '#2a2a72',
           borderTop: '1px solid #ccc',
-          marginTop: '15px',
-          color: 'white'
+          marginTop: '20px',
+          color: 'white',
+          fontSize: '14px',
         };
         return (
           <footer style={styles}>
@@ -66,21 +76,21 @@
         const containerStyle = {
           display: 'flex',
           alignItems: 'center',
-          backgroundColor: 'lightgrey',
+          backgroundColor: '#f4f4f4',
           padding: '15px',
-          margin: '10px',
+          margin: '10px 0',
           border: '1px solid #ccc',
-          borderRadius: '2px',
+          borderRadius: '5px',
           textAlign: 'left',
-          fontSize: '15px',
-          fontWeight: 'bold',
+          fontSize: '16px',
         };
 
         const imageStyle = {
-          maxWidth: '150px',
-          maxHeight: '150px',
+          width: '150px',
+          height: '150px',
+          objectFit: 'auto',
           marginRight: '15px',
-          borderRadius: '2px',
+          borderRadius: '5px',
         };
 
         const infoStyle = {
@@ -184,7 +194,7 @@
 
       const App = () => {
         const styles = {
-          backgroundColor: 'lightblue',
+          backgroundColor: '#ffdd57',
           padding: '15px',
           margin: '0',
           textAlign: 'center',
@@ -196,6 +206,7 @@
         return (
           <main style={styles}>
             <Header />
+            <TeamLogo />
             <AllPosts />
             <Footer />
           </main>
