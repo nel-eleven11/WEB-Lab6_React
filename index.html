@@ -63,38 +63,54 @@
       };
 
       const Jugador = ({nombre, posicion, posicion2, numero, equipo, descripcion, imagen, supertecnica}) => {
-        const styles = {
+        const containerStyle = {
+          display: 'flex',
+          alignItems: 'center',
           backgroundColor: 'lightgrey',
           padding: '15px',
           margin: '10px',
           border: '1px solid #ccc',
           borderRadius: '2px',
-          textAlign: 'center',
+          textAlign: 'left',
           fontSize: '15px',
           fontWeight: 'bold',
         };
+
+        const imageStyle = {
+          maxWidth: '150px',
+          maxHeight: '150px',
+          marginRight: '15px',
+          borderRadius: '2px',
+        };
+
+        const infoStyle = {
+          flex: 1,
+        };
+
         return (
-          <div style={styles}>
-            <h2>{nombre}</h2>
-            <p>Posición Principal: {posicion}</p>
-            <p>Posición Secundaria: {posicion2}</p>
-            <p>Número de camiseta: {numero}</p>
-            <p>Equipo: {equipo}</p>
-            <p>Descripción: {descripcion}</p>
-            <p>Imagen: {imagen}</p>
-            <p>Super Técnica Característica: {supertecnica}</p>
+          <div style={containerStyle}>
+            <img src={imagen} alt={nombre} style={imageStyle} />
+            <div style={infoStyle}>
+              <h2>{nombre}</h2>
+              <p>Posición Principal: {posicion}</p>
+              <p>Posición Secundaria: {posicion2}</p>
+              <p>Número de camiseta: {numero}</p>
+              <p>Equipo: {equipo}</p>
+              <p>Descripción: {descripcion}</p>
+              <p>Super Técnica Característica: {supertecnica}</p>
+            </div>
           </div>
         );
       };
 
       Jugador.propTypes = {
         nombre: PropTypes.string.isRequired,
-        posisicion: PropTypes.string.isRequired,
+        posicion: PropTypes.string.isRequired,
         posicion2: PropTypes.string,
         numero: PropTypes.number.isRequired,
         equipo: PropTypes.string.isRequired,
         descripcion: PropTypes.string,
-        imagen: PropTypes.string,
+        imagen: PropTypes.string.isRequired,
         supertecnica: PropTypes.string
       };
 
