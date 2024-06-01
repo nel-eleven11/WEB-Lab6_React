@@ -20,14 +20,14 @@
         height: '120px',
         animation: 'spin 2s linear infinite',
         margin: 'auto',
-      }
+      };
 
       const keyframesStyle = `
         @keyframes spin {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
         }
-      `
+      `;
 
       const Header = () => {
         const styles = {
@@ -39,26 +39,27 @@
           fontSize: '20px',
           fontWeight: 'bold',
           textTransform: 'uppercase'
-        }
+        };
         return (
             <header style={styles}>Inazuma Eleven Blog</header>
-        )
-      }
+        );
+      };
 
       const Footer = () => {
         const styles = {
           textAlign: 'center',
           padding: '5px',
           backgroundColor: 'blue',
-          borderTop: '1px',
+          borderTop: '1px solid #ccc',
           marginTop: '15px',
-        }
+          color: 'white'
+        };
         return (
           <footer style={styles}>
-            <p>© 2024 Inazuma Eleven Blog | Nelson García | Universidad del Valle de Guatemala </p>
+            <p>© 2024 Inazuma Eleven Blog | Nelson García Bravatti | Universidad del Valle de Guatemala </p>
           </footer>
-        )
-      }
+        );
+      };
 
       const Jugador = ({nombre, posisicion, posicion2, numero, equipo, descripcion, supertenica}) => {
         const styles = {
@@ -70,7 +71,7 @@
           textAlign: 'center',
           fontSize: '15px',
           fontWeight: 'bold',
-        }
+        };
         return (
           <div style={styles}>
             <h2>{nombre}</h2>
@@ -81,8 +82,8 @@
             <p>Descripción: {descripcion}</p>
             <p>Super Técnica Característica: {supertenica}</p>
           </div>
-        )
-      }
+        );
+      };
 
       const AllPosts = () => {
         const styles = {
@@ -90,37 +91,47 @@
           margin: '0',
           maxHeight: '100vh',
           overflowY: 'scroll',
-        }
+        };
 
-        const [jugadores, setJugadores] = useState([])
-        const [loading, setLoading] = useState(true)
-        const [error, setError] = useState(null)
+        const [jugadores, setJugadores] = useState([]);
+        const [loading, setLoading] = useState(true);
+        const [error, setError] = useState(null);
 
         useEffect(() => {
           const getPosts = async () => {
             try {
-              const response = await fetch('https://api.example.com/jugadores')
+              const response = await fetch('https://api.example.com/jugadores'); 
               if (!response.ok) {
-                throw new Error('Network response was not ok')
+                throw new Error('Network response was not ok');
               }
-              const data = await response.json()
-              setJugadores(data)
+              const data = await response.json();
+              setJugadores(data);
             } catch (error) {
-              setError(error.message)
+              setError(error.message);
             } finally {
-              setLoading(false)
+              setLoading(false);
             }
           };
 
-          getPosts()
-        }, [])
+          getPosts();
+        }, []);
 
         if (loading) {
-          return <div style={loaderStyle}></div>
+          return <div style={loaderStyle}></div>;
         }
 
         if (error) {
-          return <div>Error: {error}</div>
+          return <div>Error: {error}</div>;
+        }
+
+        if (jugadores.length === 0) {
+          const emptyStateStyle = {
+            textAlign: 'center',
+            color: 'grey',
+            padding: '20px',
+            fontSize: '18px',
+          };
+          return <div style={emptyStateStyle}>No hay jugadores disponibles</div>;
         }
 
         return (
@@ -138,8 +149,8 @@
               />
             ))}
           </ul>
-        )
-      }
+        );
+      };
 
       const App = () => {
         const styles = {
@@ -150,7 +161,7 @@
           fontSize: '20px',
           fontWeight: 'bold',
           textTransform: 'uppercase'
-        }
+        };
 
         return (
           <main style={styles}>
@@ -158,16 +169,16 @@
             <AllPosts />
             <Footer />
           </main>
-        )
-      }
+        );
+      };
 
-      const root = ReactDOM.createRoot(document.getElementById('root'))
-      root.render(<App />)
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<App />);
 
-      const styleSheet = document.createElement("style")
-      styleSheet.type = "text/css"
+      const styleSheet = document.createElement("style");
+      styleSheet.type = "text/css";
       styleSheet.innerText = keyframesStyle;
-      document.head.appendChild(styleSheet)
+      document.head.appendChild(styleSheet);
     </script>
 </body>
 </html>
