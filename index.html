@@ -65,18 +65,55 @@
         )
       }
 
+      const allPosts = () => {
+        const styles = {
+          padding: '20px',
+          margin: '0',
+          maxHeight: '100vh',
+        }
+
+        const  [jugadores, setJugadores] = useState([])
+
+        useEffect(() => {
+
+          const getPosts = async () => {
+            const response = await fetch('')
+            const data = await response.json()
+            setJugadores(data);
+          }
+
+          getPosts()
+        }, [])
+
+        return (
+          <ul style={styles}>
+            {jugadores.map((jugador) => (
+              <Jugador
+                key={jugador.id}
+                nombre={jugador.nombre}
+                posisicion={jugador.posisicion}
+                posicion2={jugador.posicion2}
+                numero={jugador.numero}
+                equipo={jugador.equipo}
+                descripcion={jugador.descripcion}
+                supertenica={jugador.supertenica}
+              />
+            ))}
+          </ul>
+        )
+      }
 
       const App = () => {
         const [loading, setLoading] = useState(true);
         const [data, setData] = useState(null);
 
         useEffect(() => {
-          // Simular una llamada a la API
+          
           setTimeout(() => {
-            // Aquí es donde normalmente harías fetch() para obtener datos de una API
+            
             setData({ message: "Datos obtenidos de la API" });
             setLoading(false);
-          }, 2000); // Simular 2 segundos de tiempo de respuesta de la API
+          }, 2000); 
         }, []);
 
         const styles = {
@@ -90,7 +127,7 @@
         }
 
         return (
-          <div style={styles}>  
+          <main style={styles}>  
             <Header />
             {loading ? (
               <div className="loader"></div>
@@ -99,8 +136,9 @@
                 <p>{data.message}</p>
               </div>
             )}
+            <allPosts />
             <Footer />
-          </div>
+          </main>
         )
       }
 
