@@ -6,6 +6,7 @@
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types/prop-types.min.js"></script>
 </head>
 <body>
     <div id="root"></div>
@@ -85,10 +86,20 @@
         );
       };
 
+      Jugador.propTypes = {
+        nombre: PropTypes.string.isRequired,
+        posisicion: PropTypes.string.isRequired,
+        posicion2: PropTypes.string,
+        numero: PropTypes.number.isRequired,
+        equipo: PropTypes.string.isRequired,
+        descripcion: PropTypes.string,
+        supertenica: PropTypes.string
+      };
+
       const AllPosts = () => {
         const styles = {
           padding: '20px',
-          margin: '0',
+          margin: '5px',
           maxHeight: '100vh',
           overflowY: 'scroll',
         };
