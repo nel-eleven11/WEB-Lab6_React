@@ -62,7 +62,7 @@
         );
       };
 
-      const Jugador = ({nombre, posisicion, posicion2, numero, equipo, descripcion, supertenica}) => {
+      const Jugador = ({nombre, posicion, posicion2, numero, equipo, descripcion, imagen, supertecnica}) => {
         const styles = {
           backgroundColor: 'lightgrey',
           padding: '15px',
@@ -76,12 +76,13 @@
         return (
           <div style={styles}>
             <h2>{nombre}</h2>
-            <p>Posición Principal: {posisicion}</p>
+            <p>Posición Principal: {posicion}</p>
             <p>Posición Secundaria: {posicion2}</p>
             <p>Número de camiseta: {numero}</p>
             <p>Equipo: {equipo}</p>
             <p>Descripción: {descripcion}</p>
-            <p>Super Técnica Característica: {supertenica}</p>
+            <p>Imagen: {imagen}</p>
+            <p>Super Técnica Característica: {supertecnica}</p>
           </div>
         );
       };
@@ -93,7 +94,8 @@
         numero: PropTypes.number.isRequired,
         equipo: PropTypes.string.isRequired,
         descripcion: PropTypes.string,
-        supertenica: PropTypes.string
+        imagen: PropTypes.string,
+        supertecnica: PropTypes.string
       };
 
       const AllPosts = () => {
@@ -151,12 +153,13 @@
               <Jugador
                 key={jugador.id}
                 nombre={jugador.nombre}
-                posisicion={jugador.posisicion}
+                posicion={jugador.posicion}
                 posicion2={jugador.posicion2}
                 numero={jugador.numero}
                 equipo={jugador.equipo}
                 descripcion={jugador.descripcion}
-                supertenica={jugador.supertenica}
+                imagen={jugador.imagen}
+                supertecnica={jugador.supertecnica}
               />
             ))}
           </ul>
