@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Button State Example</title>
+    <title>Inazuma Eleven Blog</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
     <style>
         .pressed { background-color: lightgrey; }
     </style>
@@ -14,15 +15,54 @@
     <div id="root"></div>
     <script type="text/babel"> 
 
-    const App = () => {
-      return (
-        <div>
-        </div>
-      )
-    }
+      
 
-    const root = ReactDOM.createRoot(document.getElementById('root'))
-    root.render(<App />)
+      const Header = () => {
+        const styles = {
+          backgroundColor: 'yellow',
+          color: 'blue',
+          padding: '15px',
+          margin: '0',
+          textAlign: 'center',
+          fontSize: '20px',
+          fontWeight: 'bold',
+          textTransform: 'uppercase'
+        }
+        return (
+            <header style={styles}>Inazuma Eleven Blog</header>
+        )
+      }
+
+      const Footer = () => {
+        return (
+          <footer>
+            <p>© 2021 Inazuma Eleven Blog</p>
+          </footer>
+        )
+      } 
+
+      const App = () => {
+
+        const styles = {
+          backgroundColor: 'lightblue',
+          padding: '15px',
+          margin: '0',
+          textAlign: 'center',
+          fontSize: '20px',
+          fontWeight: 'bold',
+          textTransform: 'uppercase'
+        }
+        return (
+          <div style={styles}>
+            <Header />
+            <p>Bienvenidos al blog de Inazuma Eleven.</p>
+            <Footer />
+          </div>
+        )
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById('root'))
+      root.render(<App />)
     </script>
 </body>
 </html>
