@@ -15,7 +15,7 @@
     <div id="root"></div>
     <script type="text/babel"> 
 
-      
+      const { useState, useEffect } = React;
 
       const Header = () => {
         const styles = {
@@ -41,7 +41,43 @@
         )
       } 
 
+      const Jugador = ({nombre, posisicion, posicion2, numero, equipo, descripcion, supertenica}) => {
+        const styles = {
+          backgroundColor: 'lightgrey',
+          padding: '15px',
+          margin: '0',
+          border: '1px solid #ccc',
+          borderRadius: '2px',
+          textAlign: 'center',
+          fontSize: '15px',
+          fontWeight: 'bold',
+        }
+        return (
+          <div style={styles}>
+            <h2>{nombre}</h2>
+            <p>Posición Principal: {posisicion}</p>
+            <p>Posición Secundaria: {posicion2}</p>
+            <p>Número de camiseta: {numero}</p>
+            <p>Equipo: {equipo}</p>
+            <p>Descripción: {descripcion}</p>
+            <p>Super Técnica Característica: {supertenica}</p>
+          </div>
+        )
+      }
+
+
       const App = () => {
+        const [loading, setLoading] = useState(true);
+        const [data, setData] = useState(null);
+
+        useEffect(() => {
+          // Simular una llamada a la API
+          setTimeout(() => {
+            // Aquí es donde normalmente harías fetch() para obtener datos de una API
+            setData({ message: "Datos obtenidos de la API" });
+            setLoading(false);
+          }, 2000); // Simular 2 segundos de tiempo de respuesta de la API
+        }, []);
 
         const styles = {
           backgroundColor: 'lightblue',
@@ -52,10 +88,17 @@
           fontWeight: 'bold',
           textTransform: 'uppercase'
         }
+
         return (
-          <div style={styles}>
+          <div style={styles}>  
             <Header />
-            <p>Bienvenidos al blog de Inazuma Eleven.</p>
+            {loading ? (
+              <div className="loader"></div>
+            ) : (
+              <div>
+                <p>{data.message}</p>
+              </div>
+            )}
             <Footer />
           </div>
         )
